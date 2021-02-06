@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Raspberry PI home webserver with multiple functionalities.\r This is just the backend for all the different apps.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Michaelpalacce/HomeSuite.git"
@@ -17,6 +14,7 @@
   },
   "homepage": "https://github.com/Michaelpalacce/HomeSuite#readme",
   "dependencies": {
+    "create-react-app": "^4.0.2",
     "event_request": "^30.0.1"
   }
 }
