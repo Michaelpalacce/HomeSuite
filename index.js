@@ -1,14 +1,17 @@
-const app	= require('event_request')();
-const port	= process.env.PORT || 8000;
+'use strict';
 
-require( './src/main/server/kernel' );
-require( './src/apps/notes/controllers' )
+const app		= require('event_request')();
+const port		= process.env.PORT || 8000;
+const { init }	= require( './src/main/server/db' );
 
-app.get( '/', ( event ) => {
-	event.send( 'Test!' );
-});
+init().then(() => {
+	app.Loggur.log( `MongoDB connection successfull, starting server now.` );
 
-// Start Listening
-app.listen( port, async () => {
-	app.Loggur.log( `Server started on http://localhost:${port}` );
+	require( './src/main/server/kernel' );
+	require( './src/apps/notes/controllers' )
+	
+	// Start Listening
+	app.listen( port, () => {
+		app.Loggur.log( `Server started on http://localhost:${port}` );	
+	});
 });

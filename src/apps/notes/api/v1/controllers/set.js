@@ -4,8 +4,10 @@ const app		= require( 'event_request' )();
 const { Note }	= require( '../../../../../main/server/db' );
 const router	= app.Router();
 
-router.get( '/v1/get/all', async ( event ) => {
-	event.send( await Note.find( {} ).exec() );
+router.post( '/v1/set', async( event ) => {
+	const note	= new Note( event.body );
+
+	await note.save().then(() =>{ event.send( '', 201 ) }).catch( event.next );
 });
 
 module.exports	= router;
