@@ -14,7 +14,6 @@
   },
   "homepage": "https://github.com/Michaelpalacce/HomeSuite#readme",
   "dependencies": {
-    "create-react-app": "^4.0.2",
     "event_request": "^30.0.1"
   }
 }
