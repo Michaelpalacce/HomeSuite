@@ -9,7 +9,7 @@ router.delete(
 	'/v1/delete/:id:',
 	app.er_validation.validate( { params: { id: 'string||range:12-24' } } ),
 	async( event ) => {
-		const result	= await Note.findOneAndRemove( event.params.id ).catch( event.next );
+		const result	= await Note.findOneAndRemove( { _id: Types.ObjectId( event.params.id ) } ).catch( event.next );
 
 		if ( result == null )
 			throw { code: 'app.notes.delete.notFound', status: 404 };
