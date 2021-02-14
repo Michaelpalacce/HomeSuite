@@ -55,7 +55,7 @@ const database	= {
 			Promise.all( connectionPromises ).then( () => {
 				database.Note	= dbs.notes.model( 'Note', 
 					new Schema({
-						_id			: ObjectId,
+						id			: ObjectId,
 						title		: { type: String,	default: '',	min: 1,	max: 255 },
 						content		: { type: String,	default: '' },
 						date		: { type: Date,		default: Date.now },

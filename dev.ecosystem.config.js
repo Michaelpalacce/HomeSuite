@@ -7,7 +7,9 @@ module.exports = {
       watch_options: {
         followSymlinks: false,
         usePolling: true
-      }
+      },
+	  max_restarts: 100,
+	  restart_delay: 1000
     }
   ]
 };

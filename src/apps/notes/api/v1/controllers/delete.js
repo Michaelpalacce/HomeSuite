@@ -7,13 +7,14 @@ const router	= app.Router();
 
 router.delete( 
 	'/v1/delete/:id:',
-	app.er_validation.validate( { params: { id: 'string' } } ),
+	app.er_validation.validate( { params: { id: 'string||range:12-24' } } ),
 	async( event ) => {
-		const result	= await Note.findOneAndRemove( { _id: Types.ObjectId( event.params.id ) } ).catch( event.next );
+		const result	= await Note.findOneAndRemove( event.params.id ).catch( event.next );
 
-		console.log(`Result:${result}`);
+		if ( result == null )
+			throw { code: 'app.notes.delete.notFound', status: 404 };
 
-		event.send( '', 200 );
+		event.send( '', 204 );
 });
 
 module.exports	= router;
