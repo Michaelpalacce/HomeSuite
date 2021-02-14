@@ -1,10 +1,22 @@
 'use strict';
 
 // Dependencies
-const app			= require( 'event_request' )();
-const path			= require( 'path' );
+const { App, Logging }					= require( 'event_request' );
+const { Loggur, LOG_LEVELS, Console }	= Logging;
+const path								= require( 'path' );
 
+const app			= App();
 const PROJECT_ROOT	= path.parse( require.main.filename ).dir;
+
+const logger		= Loggur.createLogger({
+	transports: [
+		new Console( { logLevel: LOG_LEVELS.notice } )
+	]
+});
+
+Loggur.addLogger( 'main', logger );
+
+app.apply( app.er_logger, { logger } );
 
 // Attach the cache server
 app.apply( app.er_data_server,	{ dataServerOptions: { persist: true } } );

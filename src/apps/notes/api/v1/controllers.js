@@ -1,8 +1,8 @@
-const app = require('event_request')();
-const notesVOneRouter = app.Router();
+const app				= require( 'event_request' )();
+const notesVOneRouter	= app.Router();
 
-const notesGetRouter = require('./controllers/get');
+const notesGetRouter	= require( './controllers/get' );
 
-notesVOneRouter.add(notesGetRouter);
+notesVOneRouter.add( notesGetRouter );
 
-module.exports = notesVOneRouter;
+module.exports	= notesVOneRouter;

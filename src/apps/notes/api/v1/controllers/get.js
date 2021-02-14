@@ -1,12 +1,12 @@
-const app = require('event_request')();
-const notesGetRouter = app.Router();
+'use strict';
 
-const mockNotes = [
-    { id: '1', title: 'Sample Note', content: 'Note content!' },
-];
+const app				= require( 'event_request' )();
+const { notes }			= require( '../../../../../main/server/db' );
+const notesGetRouter	= app.Router();
 
-notesGetRouter.get('/v1/get/all', (event) => {
-    event.send(mockNotes);
+notesGetRouter.get( '/v1/get/all', async ( event ) => {
+	const notesCollection	= await notes();
+	event.send( await notesCollection.find( {} ).toArray() );
 });
 
-module.exports = notesGetRouter;
+module.exports	= notesGetRouter;
