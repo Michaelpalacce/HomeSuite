@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/Michaelpalacce/HomeSuite#readme",
   "dependencies": {
-    "event_request": "^30.0.1",
+    "event_request": "^30.0.3",
     "mongoose": "^5.11.16"
   }
 }

@@ -9,7 +9,7 @@ module.exports = {
         usePolling: true
       },
 	  max_restarts: 100,
-	  restart_delay: 1000
+	  restart_delay: 0
     }
   ]
 };

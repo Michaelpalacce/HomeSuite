@@ -5,7 +5,12 @@ const { Types }	= require( 'mongoose' );
 const { Note }	= require( '../../../../../main/server/db' );
 const router	= app.Router();
 
-router.delete( 
+/**
+ * @brief	Deletes a note given it's id
+ *
+ * @details	Route: /notes/v1/delete/:id:
+ */
+router.delete(
 	'/v1/delete/:id:',
 	app.er_validation.validate( { params: { id: 'string||range:12-24' } } ),
 	async( event ) => {
